@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+        <div class="alert alert-danger" *ngIf="errorMsg">
+            {{errorMsg}}
+        </div>
+        <form #connexionForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate>
+            <!--{{connexionForm.value | json}}-->
+
+            <!--{{userModel | json}}-->
+            <h2 class="text-center">Se connecter</h2>
+
+            <div class="form-group">
+                <label for="emailLabel">Email</label>
+                <input  #email="ngModel" [class.is-invalid]="email.invalid && email.touched" required [(ngModel)]="userModel.email" type="email" class="form-control" name="email" placeholder="email@outlook.fr">
+            </div>
+
+            <div class="form-group">
+                <label for="passwordLabel">Mot de passe</label>
+                <input  #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched" required [(ngModel)]="userModel.mot_de_passe" type="password" class="form-control" name="password" >
+            </div>
+
+
+            <button [disabled]="connexionForm.form.invalid" type="submit" class="btn btn-success float-right">Valider</button>
+
+        </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
+
