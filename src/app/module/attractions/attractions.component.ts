@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Attraction } from '../model/attraction';
-import { AttractionsService } from '../service/attractions.service';
+import { Attraction } from '../../model/attraction';
+import { AttractionsService } from '../../service/attractions.service';
 
 @Component({
   selector: 'app-attractions',

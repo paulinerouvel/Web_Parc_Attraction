@@ -1,0 +1,17 @@
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightgrey;
+    color: rgb(61, 54, 54);
+    text-align : left;
+    z-index: 100;
+    margin-top : 20px;
+
+    span{
+        padding: 10px;
+        
+    }
+}
+

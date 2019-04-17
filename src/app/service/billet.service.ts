@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { IAttraction } from '../interface/IAttraction';
 import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Billet } from '../model/billet';
 
-//util si on veut injecter un service dans un autre service
-//ça définit que c'est un service 
 @Injectable({
   providedIn: 'root'
 })
-export class AttractionsService {
+export class BilletService {
 
   constructor(private http : HttpClient) { }
 
-
-  private _url: string = environment.UrlAPI + "/attraction";
-  getAttractions() : Observable<IAttraction[]>{
   
-    return this.http.get<IAttraction[]>(this._url).pipe(catchError( this.handleError));
+  private _url: string = environment.UrlAPI + "/billet";
+  
+  getBillets() : Observable<Billet[]>{
+  
+    return this.http.get<Billet[]>(this._url).pipe(catchError( this.handleError));
+
   }
 
 
@@ -37,5 +37,4 @@ export class AttractionsService {
     return throwError(
       'The connection to API failed.');
   };
-
 }

@@ -6,10 +6,16 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AttractionsService } from './service/attractions.service';
-import { BandeauComponent } from './bandeau/bandeau.component';
-import { ConnexionComponent } from './connexion/connexion.component';
-import { InscriptionComponent } from './inscription/inscription.component';
-import { ContactComponent } from './contact/contact.component'
+import { BandeauComponent } from './module/bandeau/bandeau.component';
+import { ConnexionComponent } from './module/connexion/connexion.component';
+import { InscriptionComponent } from './module/inscription/inscription.component';
+import { ContactComponent } from './module/contact/contact.component';
+import { FooterComponent } from './module/footer/footer.component';
+import { BilletComponent } from './module/billet/billet.component';
+import { PageNotFoundComponent } from './module/page-not-found/page-not-found.component';
+import { GestionAttractionComponent } from './module/gestion-attraction/gestion-attraction.component';
+import { AccueilAdminComponent } from './module/accueil-admin/accueil-admin.component';
+import { AccueilVisiteurComponent } from './module/accueil-visiteur/accueil-visiteur.component'
 
 
 @NgModule({
@@ -19,7 +25,13 @@ import { ContactComponent } from './contact/contact.component'
     routingComponents,
     ConnexionComponent,
     InscriptionComponent,
-    ContactComponent
+    ContactComponent,
+    FooterComponent,
+    BilletComponent,
+    PageNotFoundComponent,
+    GestionAttractionComponent,
+    AccueilAdminComponent,
+    AccueilVisiteurComponent
   ],
   imports: [
     BrowserModule,

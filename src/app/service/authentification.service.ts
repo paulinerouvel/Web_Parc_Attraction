@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { IUtilisateur } from '../interface/iutilisateur';
 import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +17,27 @@ export class AuthentificationService {
   
   register(utilisateur : IUtilisateur) : Observable<any>{
     
+    let reqHeader = new HttpHeaders({ 
+      'Authorization': 'SECRET',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
 
-    return this.http.post<IUtilisateur>(this._url + "/register", utilisateur).pipe(catchError( this.handleError));
+   });
+    return this.http.post<IUtilisateur>(this._url + "/register", utilisateur, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
   login(utilisateur : IUtilisateur) : Observable<any>{
-    
-    return this.http.post<IUtilisateur>(this._url + "/login", utilisateur).pipe(catchError( this.handleError));
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json'
+
+      
+   });
+
+   console.log(reqHeader)
+
+
+    return this.http.post<IUtilisateur>("https://api-node-parc.herokuapp.com/utilisateur/login", utilisateur, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

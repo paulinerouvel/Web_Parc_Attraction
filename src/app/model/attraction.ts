@@ -12,8 +12,6 @@ export class Attraction {
     public acces_avec_adulte: boolean,
     public en_maintenance: boolean,
     public Parc_id: number,
-
-
   ){}
     
   }
