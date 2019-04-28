@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col-6">
+      <div class="marge"></div>
+
+      <div class="alert alert-danger" *ngIf="errorMsg">
+          {{errMsg}}
+      </div>
+      <form #addAttrForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
+
+        <div class="form-group">
+          <div *ngFor="let item of attrs" >Attraction : {{item.nom}}
+            <input  #attr="ngModel" class="big-checkbox"  [(ngModel)]="lala" type="checkbox"  name="attr" > 
+            <label>Ordre : </label> 
+            <!-- <select  #ordre="ngModel" class="big-checkbox" [(ngModel)]="ordre"  name="ordre" >
+              <option  [ngValue]="1">lili</option>
+            </select>  -->
+          </div>
+        </div>
+
+        
+        <button [disabled]="addAttrForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="marge"></div>
+</div>
+

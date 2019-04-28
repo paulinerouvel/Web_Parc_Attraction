@@ -1,0 +1,102 @@
+
+<div class="container">
+  <h1 class="title">Statistiques</h1>
+  <div id="parc">
+    <div class="row">
+      <div class="col">
+        <h1>Parc </h1>
+        <table class="table">
+          <tr>
+            <td>Nombre de visiteur total </td>
+            <td>{{parc_frequentation}}</td>
+          </tr>
+          <tr>
+            <td>Nombre de visiteur en temps réel </td>
+            <td>{{parc_frequentationTR}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">  
+      <div class="col">
+        <form #dateParcForm="ngForm" class="text-left" (ngSubmit)="onSubmitParc()" novalidate>
+
+            <div class="form-group">
+                <label for="from">De</label>
+                <input  #fromParc="ngModel" [class.is-invalid]="fromParc.invalid && fromParc.touched" required [(ngModel)]="fromParcTxt" type="date" class="form-control" name="fromParc">
+            </div>
+
+            <div class="col-xs-2">
+                <label for="to">à</label>
+                <input  #toParc="ngModel" [class.is-invalid]="toParc.invalid && toParc.touched" required [(ngModel)]="toParcTxt" type="date" class="form-control" name="toParc" >
+            </div>
+
+
+            <button [disabled]="dateParcForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4;" >Valider</button>
+
+        </form>
+      </div>
+      <div class="col-6"><div  class="circle" >{{parc_frequentationDate}} </div></div>
+      <div class="col"></div>
+    </div> 
+        
+  </div>
+  
+  <div id="attr">
+    <div class="row">
+      <div class="col">
+        <h1>Attraction</h1>
+        <p>{{attr_frequentation}}</p>
+        <table class="table">
+          <thead>
+            <th scope="col">Attraction</th>
+            <th scope="col">Nombre de visiteur total</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of attrs; let i = index">
+              <td >
+                {{item.nom}} 
+              </td>
+              <td >
+                {{attr_frequentation[i]}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">  
+      <div class="col">
+        <form #dateAttrForm="ngForm" class="text-left" (ngSubmit)="onSubmitAttr()" novalidate>
+
+            <div class="form-group">
+                <label for="from">De</label>
+                <input  #fromAttr="ngModel" [class.is-invalid]="fromAttr.invalid && fromAttr.touched" required [(ngModel)]="fromAttrTxt" type="date" class="form-control" name="fromAttr">
+            </div>
+
+            <div class="col-xs-2">
+                <label for="to">à</label>
+                <input  #toAttr="ngModel" [class.is-invalid]="toAttr.invalid && toAttr.touched" required [(ngModel)]="toAttrTxt" type="date" class="form-control" name="toAttr" >
+            </div>
+
+            <div class="col-xs-2">
+              <label for="to">Attraction</label>
+              <select  #attr="ngModel" [class.is-invalid]="attr.invalid && attr.touched" required [(ngModel)]="attrTxt" class="form-control" name="attr" >
+                <option>-</option>
+                <option *ngFor="let item of attrs; let i = index" [ngValue]="item.id">{{item.nom}}</option>
+              </select>
+          </div>
+
+
+            <button [disabled]="dateAttrForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4;" >Valider</button>
+
+        </form>
+      </div>
+      <div class="col-6"> <div  class="circle" >{{attr_frequentationDate}} </div></div>
+      <div class="col"></div>
+    </div> 
+  </div>
+
+</div>

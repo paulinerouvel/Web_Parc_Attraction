@@ -20,7 +20,6 @@ export class InscriptionComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    console.log(this.userModel)
 
     this._auth.register(this.userModel)
     .subscribe(

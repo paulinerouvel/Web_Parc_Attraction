@@ -1,0 +1,35 @@
+.col{
+    
+    padding: 10px;
+    margin: 10px;
+    color: grey;
+}
+
+.title{
+    color:#8bc34a;
+    text-align:center;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+#parc{
+    border : 1px solid grey;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#attr{
+    border : 1px solid grey;
+    padding: 10px;
+}
+
+.circle{
+    border : 5px solid #8bc34a;
+    border-radius : 100%;
+    height: 150px;
+    width: 150px;
+    margin: 80px;
+    text-align: center;
+    font-size: 25px;
+    padding-top:50px;
+}

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col-6">
+      <div class="marge"></div>
+
+      <div class="alert alert-danger" *ngIf="errorMsg">
+          {{errMsg}}
+      </div>
+      <form #renovForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
+        <div class="form-group">
+            <label for="techLabel">Technicien*</label>
+            <select  #tech="ngModel" [class.is-invalid]="tech.invalid && tech.touched" required [(ngModel)]="renov.Utilisateur_id" class="form-control" name="tech" >
+              <option *ngFor="let item of techs" [ngValue]="item.id">{{item.nom}} {{item.prenom}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="debutLabel">Date de Début*</label>
+            <input #debut="ngModel" [class.is-invalid]="debut.invalid && debut.touched" required [(ngModel)]="renov.dateDebut" type="date" class="form-control" name="debut">
+        </div>
+        <div class="form-group">
+            <label for="finLabel">Date de Fin*</label>
+            <input #fin="ngModel" [class.is-invalid]="fin.invalid && fin.touched" required [(ngModel)]="renov.dateFin" type="date" class="form-control" name="fin" >
+        </div>
+        <div class="form-group">
+          <label for="coutLabel">Coût*</label>
+          <input #cout="ngModel" [class.is-invalid]="cout.invalid && cout.touched" required [(ngModel)]="renov.cout" type="text" class="form-control" name="cout">
+        </div>
+        <div class="form-group">
+            <label for="descLabel">Description*</label>
+            <input #desc="ngModel" [class.is-invalid]="desc.invalid && desc.touched" required [(ngModel)]="renov.description" type="text" class="form-control" name="desc">
+        </div>
+
+
+
+        <button [disabled]="renovForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="marge"></div>
+</div>
+

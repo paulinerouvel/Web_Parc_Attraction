@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="../../assets/images/roue.jpg" width="50px" style="margin-right:10px;">
-    <a class="navbar-brand" routerLink='/'>CourgettesLand</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background:black;">
+    <img src="../../assets/images/granderoue.png" width="50px" style="margin-right:10px; background:aliceblue; filter: invert(1);">
+    <a *ngIf="connexBtn" class="navbar-brand" style="color:white;" routerLink='/accueilAdmin'>CourgettesLand</a>
+    <a *ngIf="!connexBtn" class="navbar-brand" style="color:white;" routerLink='/'>CourgettesLand</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,19 +10,16 @@
       <ul class="navbar-nav mr-auto">
         
         <li class="nav-item">
-          <a class="nav-link" routerLink="/attractions">Attractions</a>
+          <a class="nav-link" style="color:white;" routerLink="/attractions">Attractions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/billet">Billets</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/contact">Contact</a>
+          <a class="nav-link" style="color:white;" routerLink="/billet">Billets</a>
         </li>
         
-
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-warning text-white my-2 my-sm-0" routerLink="/connexion" type="submit">Se connecter</button>
+        <button *ngIf="connexBtn" class="btn text-white my-2 my-sm-0" style="background:#3db4b4;" routerLink="/connexion" type="submit">Se connecter</button>
+        <button *ngIf="!connexBtn" class="btn text-white my-2 my-sm-0" style="background:#3db4b4;" (click)="disconnect()" type="submit">Se déconnecter</button>
       </form>
     </div>
   </nav>

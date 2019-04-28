@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Billet } from '../model/billet';
 
 @Injectable({
@@ -14,10 +14,64 @@ export class BilletService {
 
   
   private _url: string = environment.UrlAPI + "/billet";
+
+
+
+  addBillet(token : string, billet : Billet): Observable<any>{
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.post<any>(this._url, billet, {headers : reqHeader}).pipe(catchError( this.handleError));
+
+  }
+
+
+  addAttractionToPass(token : string, idAttraction : string, idBillet : string, ordre: number){
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.post<any>(this._url, {idAttraction, idBillet, ordre}, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
+
+
+
   
   getBillets() : Observable<Billet[]>{
   
     return this.http.get<Billet[]>(this._url).pipe(catchError( this.handleError));
+
+  }
+
+
+  getBilletById(id : string) : Observable<Billet>{
+  
+    return this.http.get<Billet>(this._url + "/" + id).pipe(catchError( this.handleError));
+
+  }
+
+  updateBillet(token : string, billet : Billet): Observable<any>{
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.put<any>(this._url, billet, {headers : reqHeader}).pipe(catchError( this.handleError));
+
+  }
+
+
+
+  deleteBillet(token : string, id : string): Observable<any>{
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.delete<any>(this._url + "/" + id,  {headers : reqHeader}).pipe(catchError( this.handleError));
 
   }
 

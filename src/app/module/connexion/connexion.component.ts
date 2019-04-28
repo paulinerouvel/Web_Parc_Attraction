@@ -7,7 +7,7 @@ import * as jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
-  styleUrls: ['./connexion.component.sass']
+  styleUrls: ['./connexion.component.scss']
 })
 export class ConnexionComponent implements OnInit {
 

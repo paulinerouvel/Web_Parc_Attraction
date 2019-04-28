@@ -15,7 +15,7 @@ export class AttractionsComponent implements OnInit {
   public errorMsg;
   ngOnInit() {
 
-    this._attractionService.getAttractions()
+  this._attractionService.getAttractions()
     .subscribe(data =>this.attractions = data,
                 error => this.errorMsg = error);
   }

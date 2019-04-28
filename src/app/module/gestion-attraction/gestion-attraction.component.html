@@ -1,3 +1,40 @@
-<p>
-  gestion-attraction works!
-</p>
+
+{{errorMsg}}
+
+<input type="button" routerLink="addAttraction" class="btn btn-primary float-right" value="Ajouter"/>
+<div class= "tab" *ngIf="attrs">
+  <table class="table ">
+    <thead>
+        
+      <th scope="col">Nom</th>
+      <th scope="col">Description</th>
+      <th scope="col">Type</th>
+      <th scope="col">Capacité</th>
+      <th scope="col">Durée</th>
+      <th scope="col">Horaires d'ouvertures</th>
+      <th scope="col">Acces handicapé</th>
+      <th scope="col">Acces avec Adulte</th>
+      <th scope="col">En maintenance</th>
+      <th scope="col">Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of attrs" >
+        <td>{{item.nom}} </td>
+        <td>{{item.description}}</td>
+        <td>{{item.type}}</td>
+        <td>{{item.capacite}} </td>
+        <td>{{item.duree}}</td>
+        <td>{{item.horaire_ouverture}}</td>
+        <td>{{item.acces_handicape == 1 ? "Oui" : "Non"}} </td>
+        <td>{{item.acces_avec_adulte == 1 ? "Oui" : "Non"}} </td>
+        <td>{{item.en_maintenance == 1 ? "Oui" : "Non"}}</td>
+        <td>
+          <input type="button" class="btn btn-primary" [routerLink]="['modifyAttraction', item.id]" id="{{item.id}}" value="Modifier"/>
+          <input type="button" class="btn btn-primary" (click)="suppress(item.id)" id="{{item.id}}" value="Supprimer"/>
+          <input type="button" class="btn btn-primary" [routerLink]="['entretienAttraction', item.id]" id="{{item.id}}" value="Entretien"/>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>

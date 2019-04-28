@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-6">
+        <div class="marge"></div>
         <div class="alert alert-danger" *ngIf="errorMsg">
             {{errorMsg}}
         </div>
@@ -23,7 +24,7 @@
             </div>
 
 
-            <button [disabled]="connexionForm.form.invalid" type="submit" class="btn btn-success float-right">Valider</button>
+            <button [disabled]="connexionForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4;" >Valider</button>
 
         </form>
         </div>

@@ -1,17 +1,12 @@
 export class Renovation {
 
     constructor(
-      public id: number,
-      public nom: string,
+      public Attraction_id: number,
+      public Utilisateur_id: number,
+      public dateDebut: string,
+      public cout: number,
+      public dateFin: number,
       public description: string,
-      public type: string,
-      public capacite: number,
-      public duree: string,
-      public horaire_ouverture: string,
-      public acces_handicape: boolean,
-      public acces_avec_adulte: boolean,
-      public en_maintenance: boolean,
-      public Parc_id: number,
     ){}
       
     }

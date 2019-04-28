@@ -4,6 +4,7 @@
         
       </div>
       <div class="col-6">
+        <div class="marge"></div>
 
         <div class="alert alert-danger" *ngIf="errorMsg">
             {{errorMsg}}
@@ -51,7 +52,7 @@
               <input #mot_de_passe="ngModel" [class.is-invalid]="mot_de_passe.invalid && mot_de_passe.touched" required [(ngModel)]="userModel.mot_de_passe" type="password" class="form-control" name="mot_de_passe" placeholder="">
           </div>
   
-          <button [disabled]="inscriptionForm.form.invalid" type="submit" class="btn btn-success float-right">Valider</button>
+          <button [disabled]="inscriptionForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
   
         </form>
       </div>

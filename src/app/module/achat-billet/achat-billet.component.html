@@ -1,0 +1,26 @@
+
+{{errorMsg}}
+
+<div class= "tab" *ngIf="billets">
+  <table class="table ">
+    <thead>
+        
+      <th scope="col">Type</th>
+      <th scope="col">Description</th>
+      <th scope="col">Prix</th>
+      
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of billets" >
+        <td>{{item.type}} </td>
+        <td>{{item.description}}</td>
+        <td>{{item.prix}}</td>
+        <td>
+          <input type="button" class="btn btn-primary" (click)="suppress(item.id)" id="{{item.id}}" value="Acheter"/>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>
+

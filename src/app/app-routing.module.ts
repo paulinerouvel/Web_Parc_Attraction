@@ -9,6 +9,17 @@ import { BilletComponent } from './module/billet/billet.component';
 import { PageNotFoundComponent } from './module/page-not-found/page-not-found.component';
 import { AccueilAdminComponent } from './module/accueil-admin/accueil-admin.component';
 import { AccueilVisiteurComponent } from './module/accueil-visiteur/accueil-visiteur.component';
+import { StatistiquesComponent } from './module/statistiques/statistiques.component';
+import { GestionAttractionComponent } from './module/gestion-attraction/gestion-attraction.component';
+import { ModifyAttractionComponent } from './module/modify-attraction/modify-attraction.component';
+import { AddAttractionComponent } from './module/add-attraction/add-attraction.component';
+import { EntretienAttractionComponent } from './module/entretien-attraction/entretien-attraction.component';
+import { AddRenovationComponent } from './module/add-renovation/add-renovation.component';
+import { GestionBilletComponent } from './module/gestion-billet/gestion-billet.component';
+import { ModifyBilletComponent } from './module/modify-billet/modify-billet.component';
+import { AddBilletComponent } from './module/add-billet/add-billet.component';
+import { AddAttrBilletComponent } from './module/add-attr-billet/add-attr-billet.component';
+import { AchatBilletComponent } from './module/achat-billet/achat-billet.component';
 
 //all the routes possible in the application
 const routes : Routes = [
@@ -20,6 +31,17 @@ const routes : Routes = [
     { path : 'billet' , component : BilletComponent},
     { path : 'accueilAdmin' , component : AccueilAdminComponent},
     { path : 'accueilVisiteur' , component : AccueilVisiteurComponent},
+    { path : 'accueilAdmin/statistiques' , component : StatistiquesComponent},
+    { path : 'accueilAdmin/gestionAttractions', component : GestionAttractionComponent},
+    { path : 'accueilAdmin/gestionAttractions/modifyAttraction/:id', component : ModifyAttractionComponent},
+    { path : 'accueilAdmin/gestionAttractions/entretienAttraction/:id', component : EntretienAttractionComponent},
+    { path : 'accueilAdmin/gestionAttractions/entretienAttraction/:id/addRenovation', component : AddRenovationComponent},
+    { path : 'accueilAdmin/gestionAttractions/addAttraction', component : AddAttractionComponent},
+    { path : 'accueilAdmin/gestionBillets', component : GestionBilletComponent},
+    { path : 'accueilAdmin/gestionBillets/addBillet', component : AddBilletComponent},
+    { path : 'accueilAdmin/gestionBillets/addAttrBillet/:id', component : AddAttrBilletComponent},
+    { path : 'accueilAdmin/gestionBillets/modifyBillet/:id', component : ModifyBilletComponent},
+    { path : 'accueilVisiteur/achatBillet', component : AchatBilletComponent},
     { path : '**' , component : PageNotFoundComponent} //ATTENTION : Doit toujours etre la derniere route
 ];
 
@@ -30,4 +52,5 @@ const routes : Routes = [
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [AttractionsComponent, ConnexionComponent, InscriptionComponent, ContactComponent, BilletComponent, AccueilAdminComponent, AccueilVisiteurComponent ,PageNotFoundComponent]
+export const routingComponents = [AttractionsComponent, ConnexionComponent, InscriptionComponent, ContactComponent, BilletComponent, AccueilAdminComponent, AccueilVisiteurComponent, StatistiquesComponent, GestionAttractionComponent, ModifyAttractionComponent, AddAttractionComponent, AddRenovationComponent,EntretienAttractionComponent, GestionBilletComponent, ModifyBilletComponent 
+   , AddBilletComponent, AddAttrBilletComponent, AchatBilletComponent, PageNotFoundComponent]

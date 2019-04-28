@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents} from './app-routing.module';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import {  LOCALE_ID } from '@angular/core';
+
+
 
 import { AppComponent } from './app.component';
 import { AttractionsService } from './service/attractions.service';
@@ -15,8 +20,21 @@ import { BilletComponent } from './module/billet/billet.component';
 import { PageNotFoundComponent } from './module/page-not-found/page-not-found.component';
 import { GestionAttractionComponent } from './module/gestion-attraction/gestion-attraction.component';
 import { AccueilAdminComponent } from './module/accueil-admin/accueil-admin.component';
-import { AccueilVisiteurComponent } from './module/accueil-visiteur/accueil-visiteur.component'
+import { AccueilVisiteurComponent } from './module/accueil-visiteur/accueil-visiteur.component';
+import { StatistiquesComponent } from './module/statistiques/statistiques.component';
+import { ModifyAttractionComponent } from './module/modify-attraction/modify-attraction.component';
+import { AddAttractionComponent } from './module/add-attraction/add-attraction.component';
+import { EntretienAttractionComponent } from './module/entretien-attraction/entretien-attraction.component';
+import { AddRenovationComponent } from './module/add-renovation/add-renovation.component';
+import { GestionBilletComponent } from './module/gestion-billet/gestion-billet.component';
+import { ModifyBilletComponent } from './module/modify-billet/modify-billet.component';
+import { AddBilletComponent } from './module/add-billet/add-billet.component';
+import { AddAttrBilletComponent } from './module/add-attr-billet/add-attr-billet.component';
+import { AchatBilletComponent } from './module/achat-billet/achat-billet.component'
 
+
+registerLocaleData(localeFr);
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -31,7 +49,17 @@ import { AccueilVisiteurComponent } from './module/accueil-visiteur/accueil-visi
     PageNotFoundComponent,
     GestionAttractionComponent,
     AccueilAdminComponent,
-    AccueilVisiteurComponent
+    AccueilVisiteurComponent,
+    StatistiquesComponent,
+    ModifyAttractionComponent,
+    AddAttractionComponent,
+    EntretienAttractionComponent,
+    AddRenovationComponent,
+    GestionBilletComponent,
+    ModifyBilletComponent,
+    AddBilletComponent,
+    AddAttrBilletComponent,
+    AchatBilletComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +67,7 @@ import { AccueilVisiteurComponent } from './module/accueil-visiteur/accueil-visi
     FormsModule,
     HttpClientModule
   ],
-  providers: [AttractionsService],
+  providers: [AttractionsService, {provide: LOCALE_ID, useValue: "fr-CA" } ],
   bootstrap: [AppComponent]
   
 })

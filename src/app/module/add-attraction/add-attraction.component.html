@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col-6">
+      <div class="marge"></div>
+
+      <div class="alert alert-danger" *ngIf="errorMsg">
+          {{errMsg}}
+      </div>
+      <form #modifForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
+
+        <div class="form-group">
+            <label for="nomLabel">Nom*</label>
+            <input #nom="ngModel" [class.is-invalid]="nom.invalid && nom.touched" required [(ngModel)]="attr.nom" type="text" class="form-control" name="nom" >
+        </div>
+        <div class="form-group">
+            <label for="descriptionLabel">Description</label>
+            <input #description="ngModel" [class.is-invalid]="description.invalid && description.touched" [(ngModel)]="attr.description" type="text" class="form-control" name="descriptiontxt">
+        </div>
+        <div class="form-group">
+            <label for="typeLabel">Type*</label>
+            <input #type="ngModel" [class.is-invalid]="type.invalid && type.touched" required [(ngModel)]="attr.type" type="text" class="form-control" name="type" >
+        </div>
+        <div class="form-group">
+          <label for="capaciteLabel">Capacité*</label>
+          <input #capacite="ngModel" [class.is-invalid]="capacite.invalid && capacite.touched" required [(ngModel)]="attr.capacite" type="text" class="form-control" name="capacite">
+        </div>
+        <div class="form-group">
+            <label for="dureeLabel">Durée*</label>
+            <input #duree="ngModel" [class.is-invalid]="duree.invalid && duree.touched" [(ngModel)]="attr.duree" type="time" class="form-control" name="duree">
+        </div>
+        <div class="form-group">
+            <label for="horaire_ouvertureLabel">Horaire Ouverture*</label>
+            <input #horaire_ouverture="ngModel" [class.is-invalid]="horaire_ouverture.invalid && horaire_ouverture.touched" required [(ngModel)]="attr.horaire_ouverture" type="text" class="form-control" name="horaire_ouverture" >
+        </div>
+        <div class="form-group">
+            <label for="acces_avec_adulteLabel">Accès avec Adulte*</label>
+            <select  #acces_avec_adulte="ngModel" [class.is-invalid]="acces_avec_adulte.invalid && acces_avec_adulte.touched" required [(ngModel)]="attr.acces_avec_adulte" class="form-control" name="acces_avec_adulte" >
+              <option [ngValue]="true">Oui</option>
+              <option [ngValue]="false">Non</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="acces_handicapeLabel">Accès Handicapé*</label>
+            <select  #acces_handicape="ngModel" [class.is-invalid]="acces_handicape.invalid && acces_handicape.touched" required [(ngModel)]="attr.acces_handicape" class="form-control" name="acces_handicape" >
+              <option [ngValue]="true">Oui</option>
+              <option [ngValue]="false">Non</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="en_maintenanceLabel">En Maintenance*</label>
+            <select  #en_maintenance="ngModel" [class.is-invalid]="en_maintenance.invalid && en_maintenance.touched" required [(ngModel)]="attr.en_maintenance" class="form-control" name="en_maintenance" >
+              <option [ngValue]="true">Oui</option>
+              <option [ngValue]="false" >Non</option>
+            </select>
+        </div>
+
+        <button [disabled]="modifForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="marge"></div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col-6">
+      <div class="marge"></div>
+
+      <div class="alert alert-danger" *ngIf="errorMsg">
+          {{errMsg}}
+      </div>
+      <form #addForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
+
+        <div class="form-group">
+            <label for="typeLabel">Type*</label>
+            <input #type="ngModel" [class.is-invalid]="type.invalid && type.touched" required [(ngModel)]="billet.type" type="text" class="form-control" name="type" >
+        </div>
+        <div class="form-group">
+            <label for="descriptionLabel">Description*</label>
+            <input #description="ngModel" [class.is-invalid]="description.invalid && description.touched" required [(ngModel)]="billet.description" type="text" class="form-control" name="descriptiontxt">
+        </div>
+        <div class="form-group">
+            <label for="prixLabel">Prix*</label>
+            <input #prix="ngModel" [class.is-invalid]="prix.invalid && prix.touched" required [(ngModel)]="billet.prix" type="text" class="form-control" name="prix" >
+        </div>
+        
+        <button [disabled]="addForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="marge"></div>
+</div>
