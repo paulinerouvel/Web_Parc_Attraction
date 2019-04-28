@@ -30,7 +30,11 @@ import { GestionBilletComponent } from './module/gestion-billet/gestion-billet.c
 import { ModifyBilletComponent } from './module/modify-billet/modify-billet.component';
 import { AddBilletComponent } from './module/add-billet/add-billet.component';
 import { AddAttrBilletComponent } from './module/add-attr-billet/add-attr-billet.component';
-import { AchatBilletComponent } from './module/achat-billet/achat-billet.component'
+import { AchatBilletComponent } from './module/achat-billet/achat-billet.component';
+import { GestionParcComponent } from './module/gestion-parc/gestion-parc.component';
+import { GestionUtilisateurComponent } from './module/gestion-utilisateur/gestion-utilisateur.component';
+import { ModifyUtilisateurComponent } from './module/modify-utilisateur/modify-utilisateur.component';
+import { AddUtilisateurComponent } from './module/add-utilisateur/add-utilisateur.component';
 
 
 registerLocaleData(localeFr);
@@ -59,7 +63,11 @@ registerLocaleData(localeFr, 'fr');
     ModifyBilletComponent,
     AddBilletComponent,
     AddAttrBilletComponent,
-    AchatBilletComponent
+    AchatBilletComponent,
+    GestionParcComponent,
+    GestionUtilisateurComponent,
+    ModifyUtilisateurComponent,
+    AddUtilisateurComponent
   ],
   imports: [
     BrowserModule,

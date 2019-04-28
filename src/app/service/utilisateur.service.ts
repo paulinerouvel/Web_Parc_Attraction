@@ -3,6 +3,7 @@ import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Utilisateur } from '../model/utilisateur';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,52 @@ export class UtilisateurService {
 
   private _url: string = environment.UrlAPI + "/utilisateur";
 
-  //adduser : post /register body: toute les infos
 
-  //addAcces parc /accesParc : post body: idParc, idUser
+  addUtilisateur(token : string, user : Utilisateur) : Observable<any>{
 
-  //addSortieParc /sortieParc : post body : idParc, idUser 
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
 
-  //addAccesAttraction: post body: /accesAttraction: body: idUser, idAttraction
+    return this.http.post<Utilisateur>(this._url + "/register", user, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
+
+  addAccesParc(token : string, idParc: string, idUser : string) : Observable<any>{
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+  });
+
+    return this.http.post<Utilisateur>(this._url + "/accesParc", {idParc, idUser}, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
+
+  addSortieParc(token : string, idParc: string, idUser : string) : Observable<any>{
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+  });
+
+    return this.http.post<Utilisateur>(this._url + "/sortieParc", {idParc, idUser}, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
+
+
+
+  addAccesAttraction(token : string, idAttraction: string, idUser : string) : Observable<any>{
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+  });
+
+    return this.http.post<Utilisateur>(this._url + "/accesAttraction", {idAttraction, idUser}, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
 
   getUtilisateurById(token : string, id : string) : Observable<any>{
 
@@ -43,14 +83,36 @@ export class UtilisateurService {
       'Authorization': 'Bearer ' + token
    });
 
+   
   
     return this.http.get<string>(this._url, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
-  //update: put/ body : tout
+ 
+
+  updateUtilisateur(token : string, user : Utilisateur) : Observable<any>{
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+
+    return this.http.put<Utilisateur>(this._url, user, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
 
 
-  //delete/:id
+
+  deleteUtilisateur(token : string, id : string) : Observable<any>{
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+
+    return this.http.delete<string>(this._url +"/" + id, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
 
 
   private handleError(error: HttpErrorResponse) {

@@ -20,6 +20,10 @@ import { ModifyBilletComponent } from './module/modify-billet/modify-billet.comp
 import { AddBilletComponent } from './module/add-billet/add-billet.component';
 import { AddAttrBilletComponent } from './module/add-attr-billet/add-attr-billet.component';
 import { AchatBilletComponent } from './module/achat-billet/achat-billet.component';
+import { GestionParcComponent } from './module/gestion-parc/gestion-parc.component';
+import { GestionUtilisateurComponent } from './module/gestion-utilisateur/gestion-utilisateur.component';
+import { ModifyUtilisateurComponent } from './module/modify-utilisateur/modify-utilisateur.component';
+import { AddUtilisateurComponent } from './module/add-utilisateur/add-utilisateur.component';
 
 //all the routes possible in the application
 const routes : Routes = [
@@ -32,6 +36,10 @@ const routes : Routes = [
     { path : 'accueilAdmin' , component : AccueilAdminComponent},
     { path : 'accueilVisiteur' , component : AccueilVisiteurComponent},
     { path : 'accueilAdmin/statistiques' , component : StatistiquesComponent},
+    { path : 'accueilAdmin/gestionParc' , component : GestionParcComponent},
+    { path : 'accueilAdmin/gestionUtilisateur' , component : GestionUtilisateurComponent},
+    { path : 'accueilAdmin/gestionUtilisateur/addUtilisateur' , component : AddUtilisateurComponent},
+    { path : 'accueilAdmin/gestionUtilisateur/modifyUtilisateur/:id' , component : ModifyUtilisateurComponent},
     { path : 'accueilAdmin/gestionAttractions', component : GestionAttractionComponent},
     { path : 'accueilAdmin/gestionAttractions/modifyAttraction/:id', component : ModifyAttractionComponent},
     { path : 'accueilAdmin/gestionAttractions/entretienAttraction/:id', component : EntretienAttractionComponent},
@@ -53,4 +61,4 @@ const routes : Routes = [
 
 export class AppRoutingModule { }
 export const routingComponents = [AttractionsComponent, ConnexionComponent, InscriptionComponent, ContactComponent, BilletComponent, AccueilAdminComponent, AccueilVisiteurComponent, StatistiquesComponent, GestionAttractionComponent, ModifyAttractionComponent, AddAttractionComponent, AddRenovationComponent,EntretienAttractionComponent, GestionBilletComponent, ModifyBilletComponent 
-   , AddBilletComponent, AddAttrBilletComponent, AchatBilletComponent, PageNotFoundComponent]
+   , AddBilletComponent, AddAttrBilletComponent, AchatBilletComponent, GestionParcComponent, GestionUtilisateurComponent, ModifyUtilisateurComponent, AddUtilisateurComponent,PageNotFoundComponent]

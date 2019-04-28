@@ -1,0 +1,38 @@
+
+{{errorMsg}}
+
+<input type="button" routerLink="addUtilisateur" class="btn btn-primary float-right" value="Ajouter"/>
+<div class= "tab" *ngIf="users">
+  <table class="table ">
+    <thead>       
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Date de naissance</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Mail</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Code Postal</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Type</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users" >
+        <td>{{item.nom}} </td>
+        <td>{{item.prenom}}</td>
+        <td>{{item.date_de_naissance | date}}</td>
+        <td>{{item.tel}} </td>
+        <td>{{item.mail}}</td>
+        <td>{{item.adresse}}</td>
+        <td>{{item.cp }} </td>
+        <td>{{item.ville}} </td>
+        <td>{{item.type}}</td>
+        <td>
+          <input type="button" class="btn btn-primary" [routerLink]="['modifyUtilisateur', item.id]" id="{{item.id}}" value="Modifier"/>
+          <input type="button" class="btn btn-primary" (click)="suppress(item.id)" id="{{item.id}}" value="Supprimer"/>
+          
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>

@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col-6">
+        <div class="marge"></div>
+
+        <div class="alert alert-danger" *ngIf="errorMsg">
+            {{errorMsg}}
+        </div>
+
+        <form #modifyForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
+  
+          <div class="form-group">
+              <label for="nomLabel">Nom*</label>
+              <input #nom="ngModel" [class.is-invalid]="nom.invalid && nom.touched" required [(ngModel)]="userModel.nom" type="text" class="form-control" name="nom" placeholder="NOM">
+          </div>
+          <div class="form-group">
+              <label for="prenomLabel">Prenom*</label>
+              <input #prenom="ngModel" [class.is-invalid]="prenom.invalid && prenom.touched" required [(ngModel)]="userModel.prenom" type="text" class="form-control" name="prenom" placeholder="Prenom">
+          </div>
+          <div class="form-group">
+              <label for="dateNaissance">Date de naissance*</label>
+              <input #dateNaissance="ngModel" [class.is-invalid]="dateNaissance.invalid && dateNaissance.touched" required [(ngModel)]="userModel.date_de_naissance" type="date" class="form-control" name="dateNaissance" >
+          </div>
+          <div class="form-group">
+            <label for="emailLabel">Email*</label>
+            <input #mail="ngModel" [class.is-invalid]="mail.invalid && mail.touched" required [(ngModel)]="userModel.mail" type="email" class="form-control" name="email" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+              <label for="telLabel">Telephone</label>
+              <input #tel="ngModel" [class.is-invalid]="tel.invalid && tel.touched" [(ngModel)]="userModel.tel" type="text" class="form-control" name="tel" >
+          </div>
+          <div class="form-group">
+              <label for="adresseLabel">Adresse*</label>
+              <input #adresse="ngModel" [class.is-invalid]="adresse.invalid && adresse.touched" required [(ngModel)]="userModel.adresse" type="text" class="form-control" name="adresse" placeholder="12 Avenue des Champs Elysées">
+          </div>
+          <div class="form-group">
+              <label for="cpLabel">Code Postal*</label>
+              <input #cp="ngModel" [class.is-invalid]="cp.invalid && cp.touched" required [(ngModel)]="userModel.cp" type="text" class="form-control" name="cp" placeholder="75008">
+          </div>
+  
+          <div class="form-group">
+              <label for="villeLabel">Ville*</label>
+              <input #ville="ngModel" [class.is-invalid]="ville.invalid && ville.touched" required [(ngModel)]="userModel.ville" type="text" class="form-control" name="ville" placeholder="Paris">
+          </div>
+
+  
+          <button [disabled]="modifyForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+  
+        </form>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="marge"></div>
+  </div>
