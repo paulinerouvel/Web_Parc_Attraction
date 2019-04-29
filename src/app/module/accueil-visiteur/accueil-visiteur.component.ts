@@ -14,23 +14,34 @@ export class AccueilVisiteurComponent implements OnInit {
   constructor(private _utilisateurService : UtilisateurService) { }
 
   public token : string = localStorage.getItem('token');
+  public tokenDec = jwt_decode(this.token);
+  public idUser = this.tokenDec.id;
+  public acces;
+  public sorties;
 
 
   ngOnInit() {
   }
 
-  accesParc(){
-    let tokenDec = jwt_decode(this.token);
-    this._utilisateurService.addAccesParc(this.token, "1", tokenDec.id).subscribe(res=>console.log(res))
+
+
+  async sortieParc(){
+    this.acces = await this._utilisateurService.getAccesParc(this.token, this.idUser).toPromise();
+    this.sorties = await this._utilisateurService.getSortieParc(this.token, this.idUser).toPromise();
+
+    let lastAcces = this.acces[this.acces.length - 1 ];
+    let lastSortie = this.sorties[this.sorties.length - 1 ];
+
+    if(new Date(lastAcces.date) < new Date(lastSortie.date)){
+      this._utilisateurService.addSortieParc(this.token, "1", this.idUser).subscribe(
+        res=>alert("Sortie enregistrée")
+      )
+    }
+    else{
+      alert("Vous ne pouvez pas sortir sans être entré ;)");
+    }
+
   }
 
-  sortieParc(){
-    console.log("la2")
-    window.open(location.pathname,"nom_popup","menubar=no, status=no, scrollbars=no, menubar=no, width=200, height=100");
-  }
-
-  accesAttraction(){
-    console.log("la3")
-  }
 
 }

@@ -88,6 +88,30 @@ export class UtilisateurService {
     return this.http.get<string>(this._url, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
+
+  getSortieParc(token : string, idUser: string){
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+
+    return this.http.get<string>(this._url +  "/sortieParc?idUtilisateur=" + idUser, {headers : reqHeader}).pipe(catchError( this.handleError));
+
+  }
+
+  getAccesParc(token : string, idUser: string){
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+
+    return this.http.get<string>(this._url +  "/accesParc?idUtilisateur=" + idUser, {headers : reqHeader}).pipe(catchError( this.handleError));
+
+  }
+
+
  
 
   updateUtilisateur(token : string, user : Utilisateur) : Observable<any>{

@@ -35,6 +35,9 @@ import { GestionParcComponent } from './module/gestion-parc/gestion-parc.compone
 import { GestionUtilisateurComponent } from './module/gestion-utilisateur/gestion-utilisateur.component';
 import { ModifyUtilisateurComponent } from './module/modify-utilisateur/modify-utilisateur.component';
 import { AddUtilisateurComponent } from './module/add-utilisateur/add-utilisateur.component';
+import { AccesParcComponent } from './module/acces-parc/acces-parc.component';
+import { AccesAttractionComponent } from './module/acces-attraction/acces-attraction.component';
+import { ModifyParcComponent } from './module/modify-parc/modify-parc.component';
 
 
 registerLocaleData(localeFr);
@@ -67,7 +70,10 @@ registerLocaleData(localeFr, 'fr');
     GestionParcComponent,
     GestionUtilisateurComponent,
     ModifyUtilisateurComponent,
-    AddUtilisateurComponent
+    AddUtilisateurComponent,
+    AccesParcComponent,
+    AccesAttractionComponent,
+    ModifyParcComponent
   ],
   imports: [
     BrowserModule,
