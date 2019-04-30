@@ -1,3 +1,66 @@
-<p>
-  gestion-parc works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-6">
+      <div class="marge"></div>
+
+      <div class="alert alert-danger" *ngIf="errorMsg">
+        {{errMsg}}
+      </div>
+      <form #modifForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
+
+        <div class="form-group">
+          <label for="idLabel">ID*</label>
+          <input #id="ngModel" [class.is-invalid]="id.invalid && id.touched" required [(ngModel)]="parc.id" type="text" class="form-control" name="id" >
+        </div>
+        <div class="form-group">
+          <label for="nomLabel">Nom*</label>
+          <input #nom="ngModel" [class.is-invalid]="nom.invalid && nom.touched" required [(ngModel)]="parc.nom" type="text" class="form-control" name="nom" >
+        </div>
+        <div class="form-group">
+          <label for="descriptionLabel">Description</label>
+          <input #description="ngModel" [class.is-invalid]="description.invalid && description.touched"  [(ngModel)]="parc.description" type="text" class="form-control" name="descriptiontxt">
+        </div>
+        <div class="form-group">
+          <label for="adresseLabel">Adresse*</label>
+          <input #adresse="ngModel" [class.is-invalid]="adresse.invalid && adresse.touched" required [(ngModel)]="parc.adresse" type="text" class="form-control" name="adresse" >
+        </div>
+        <div class="form-group">
+          <label for="cpLabel">Code Postal*</label>
+          <input #cp="ngModel" [class.is-invalid]="cp.invalid && cp.touched" required [(ngModel)]="parc.cp" type="text" class="form-control" name="cp">
+        </div>
+        <div class="form-group">
+          <label for="villeLabel">Ville*</label>
+          <input #ville="ngModel" [class.is-invalid]="ville.invalid && ville.touched" [(ngModel)]="parc.ville" type="time" class="form-control" name="ville">
+        </div>
+        <div class="form-group">
+          <label for="telLabel">Téléphone*</label>
+          <input #tel="ngModel" [class.is-invalid]="tel.invalid && tel.touched" required [(ngModel)]="parc.tel" type="text" class="form-control" name="tel" >
+        </div>
+        <div class="form-group">
+          <label for="mailLabel">Mail*</label>
+          <input #mail="ngModel" [class.is-invalid]="mail.invalid && mail.touched" required [(ngModel)]="parc.mail" type="text" class="form-control" name="mail" >
+        </div>
+        <div class="form-group">
+          <label for="beneficeLabel">Bénéfice*</label>
+          <input #benefice="ngModel" [class.is-invalid]="benefice.invalid && benefice.touched" required [(ngModel)]="parc.benefice" type="number" class="form-control" name="benefice" >
+        </div>
+        <div class="form-group">
+          <label for="est_ouvertLabel">Est ouvert*</label>
+          <select  #est_ouvert="ngModel" [class.is-invalid]="est_ouvert.invalid && est_ouvert.touched" required [(ngModel)]="parc.est_ouvert" class="form-control" name="est_ouvert" >
+            <option [ngValue]="1">Oui</option>
+            <option [ngValue]="0">Non</option>
+          </select>
+        </div>
+
+
+        <button [disabled]="modifForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="marge"></div>
+</div>
