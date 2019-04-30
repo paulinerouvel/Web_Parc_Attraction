@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { IParc } from '../interface/IParc';
 import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
@@ -27,7 +26,7 @@ export class ParcService {
   }
 
   getParc() : Observable<Parc[]>{
-    return this.http.get<IParc[]>(this._url).pipe(catchError( this.handleError));
+    return this.http.get<Parc[]>(this._url).pipe(catchError( this.handleError));
   }
 
   getParcById(id : number) : Observable<Parc>{

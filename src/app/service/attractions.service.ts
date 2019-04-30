@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { IAttraction } from '../interface/IAttraction';
 import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
@@ -34,8 +33,8 @@ export class AttractionsService {
   //addImage(token, idAttraction, url)
   //post "/image" body : idAttraction / url
 
-  getAttractions() : Observable<IAttraction[]>{
-    return this.http.get<IAttraction[]>(this._url).pipe(catchError( this.handleError));
+  getAttractions() : Observable<Attraction[]>{
+    return this.http.get<Attraction[]>(this._url).pipe(catchError( this.handleError));
   }
 
   getAttractionById(id : number) : Observable<Attraction>{
