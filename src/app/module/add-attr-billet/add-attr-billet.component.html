@@ -9,20 +9,36 @@
       <div class="alert alert-danger" *ngIf="errorMsg">
           {{errMsg}}
       </div>
-      <form #addAttrForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
 
-        <div class="form-group">
-          <div *ngFor="let item of attrs" >Attraction : {{item.nom}}
-            <input  #attr="ngModel" class="big-checkbox"  [(ngModel)]="lala" type="checkbox"  name="attr" > 
-            <label>Ordre : </label> 
-            <!-- <select  #ordre="ngModel" class="big-checkbox" [(ngModel)]="ordre"  name="ordre" >
-              <option  [ngValue]="1">lili</option>
-            </select>  -->
+      <h3>Attractions actuellement associées</h3>
+
+      <div *ngFor="let a of attrsAlreadyAssocied" > 
+        <div class="row">
+          <div class="col">
+            {{a.nom}} <p *ngIf="a.order != -1"> Ordre : {{a.order}}</p>
           </div>
         </div>
+      </div>
+      <form #addAttrForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
 
+        <h1>Selectionner les attractions à ajouter</h1>
         
-        <button [disabled]="addAttrForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+        
+        <div class="form-group">
+          <div *ngFor="let item of attrs; let i = index" > 
+            <div class="row">
+              <div class="col">
+                  
+                <input  #attrTxt{{i}}="ngModel" class="big-checkbox"  [(ngModel)]="attractions[i]" name="attrTxt{{i}}" type="checkbox">
+                {{item.nom}}
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+      <input type="button" class="btn btn-primary" [routerLink]="['addOrdreBillet', id]" [queryParams]="{ attr: attrs, attrSelected: attractions }" id="{{id}}" value="Modifier"/>
+        
 
       </form>
     </div>

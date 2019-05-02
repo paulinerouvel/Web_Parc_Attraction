@@ -5,12 +5,14 @@
       <th scope="col">Type</th>
       <th scope="col">Description</th>
       <th scope="col">Prix</th>
+      <th scope="col">Duree</th>
     </thead>
     <tbody>
       <tr *ngFor="let item of billets">
         <td>{{item.type}} </td>
         <td>{{item.description}}</td>
         <td>{{item.prix}} €</td>
+        <td>{{item.dureeValidite}}</td>
       </tr>
     </tbody>
     

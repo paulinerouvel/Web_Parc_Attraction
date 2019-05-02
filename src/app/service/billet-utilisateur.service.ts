@@ -3,6 +3,7 @@ import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Billet_utilisateur } from '../model/billet_utilisateur';
 
 
 @Injectable({
@@ -15,6 +16,17 @@ export class BilletUtilisateurService {
   private _url: string = environment.UrlAPI + "/billet_utilisateur";
 
   //addBU: post body : tout
+
+  addBU(token : string, BU : Billet_utilisateur): Observable<any>{
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.post<any>(this._url, BU,  {headers : reqHeader}).pipe(catchError( this.handleError));
+
+  }
+
 
   //get bu by idUtilisateur : ?id=
   getBUByUser(token : string, idUser : string): Observable<any>{

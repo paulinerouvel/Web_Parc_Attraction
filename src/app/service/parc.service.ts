@@ -29,7 +29,7 @@ export class ParcService {
     return this.http.get<Parc[]>(this._url).pipe(catchError( this.handleError));
   }
 
-  getParcById(id : number) : Observable<Parc>{
+  getParcById(id : string) : Observable<Parc>{
 
     let reqHeader = new HttpHeaders({
       'accept': 'application/json',
@@ -50,20 +50,7 @@ export class ParcService {
     return this.http.put<Parc>(this._url, parc, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
-  // Unused
-  deleteParc(token : string , id : string) : Observable<any>{
 
-    let reqHeader = new HttpHeaders({
-      'accept': 'application/json',
-      'content-type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
-
-
-    return this.http.delete<any>(this._url + "/" + id, {headers : reqHeader}).pipe(catchError( this.handleError));
-
-  }
-  //delete image : delete => /image/:id
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -81,7 +68,5 @@ export class ParcService {
       'The connection to API failed.');
   };
 
-  //get by id / get?id=
 
-  //updateParc: put/ body: tout
 }

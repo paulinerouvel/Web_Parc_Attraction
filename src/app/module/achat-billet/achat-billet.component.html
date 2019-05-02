@@ -8,6 +8,7 @@
       <th scope="col">Type</th>
       <th scope="col">Description</th>
       <th scope="col">Prix</th>
+      <th scope="col">Duree</th>
       
     </thead>
     <tbody>
@@ -15,8 +16,9 @@
         <td>{{item.type}} </td>
         <td>{{item.description}}</td>
         <td>{{item.prix}}</td>
+        <td>{{item.dureeValidite}}</td>
         <td>
-          <input type="button" class="btn btn-primary" (click)="suppress(item.id)" id="{{item.id}}" value="Acheter"/>
+          <input [routerLink]="['achatBilletInfo', item.id]" type="button" class="btn btn-primary"  id="{{item.id}}" value="Acheter"/>
         </td>
       </tr>
     </tbody>

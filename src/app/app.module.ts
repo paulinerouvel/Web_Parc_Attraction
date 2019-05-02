@@ -37,7 +37,11 @@ import { ModifyUtilisateurComponent } from './module/modify-utilisateur/modify-u
 import { AddUtilisateurComponent } from './module/add-utilisateur/add-utilisateur.component';
 import { AccesParcComponent } from './module/acces-parc/acces-parc.component';
 import { AccesAttractionComponent } from './module/acces-attraction/acces-attraction.component';
-import { ModifyParcComponent } from './module/modify-parc/modify-parc.component';
+import { AddOrdreBilletComponent } from './module/add-ordre-billet/add-ordre-billet.component';
+import { ModifyProfilComponent } from './module/modify-profil/modify-profil.component';
+import { AchatBilletInfoComponent } from './module/achat-billet-info/achat-billet-info.component';
+import { MesBilletsComponent } from './module/mes-billets/mes-billets.component';
+
 
 
 registerLocaleData(localeFr);
@@ -73,7 +77,10 @@ registerLocaleData(localeFr, 'fr');
     AddUtilisateurComponent,
     AccesParcComponent,
     AccesAttractionComponent,
-    ModifyParcComponent
+    AddOrdreBilletComponent,
+    ModifyProfilComponent,
+    AchatBilletInfoComponent,
+    MesBilletsComponent
   ],
   imports: [
     BrowserModule,

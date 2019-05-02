@@ -23,6 +23,14 @@
             <label for="prixLabel">Prix*</label>
             <input #prix="ngModel" [class.is-invalid]="prix.invalid && prix.touched" required [(ngModel)]="billet.prix" type="text" class="form-control" name="prix" >
         </div>
+
+        <div class="form-group">
+            <label for="dureeLabel">Duree*</label>
+            <select  #duree="ngModel" [class.is-invalid]="duree.invalid && duree.touched" required [(ngModel)]="billet.dureeValidite" class="form-control" name="duree" >
+                <option [ngValue]="31536000">1 an</option>
+                <option [ngValue]="86400">1 jour</option>
+            </select>
+        </div>
         
         <button [disabled]="addForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
 

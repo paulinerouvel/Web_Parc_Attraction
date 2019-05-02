@@ -29,17 +29,23 @@ export class AccueilVisiteurComponent implements OnInit {
     this.acces = await this._utilisateurService.getAccesParc(this.token, this.idUser).toPromise();
     this.sorties = await this._utilisateurService.getSortieParc(this.token, this.idUser).toPromise();
 
-    let lastAcces = this.acces[this.acces.length - 1 ];
-    let lastSortie = this.sorties[this.sorties.length - 1 ];
-
-    if(new Date(lastAcces.date) < new Date(lastSortie.date)){
-      this._utilisateurService.addSortieParc(this.token, "1", this.idUser).subscribe(
-        res=>alert("Sortie enregistrée")
-      )
+    if(this.acces.length != 0 && this.sorties.length != 0){
+      let lastAcces = this.acces[this.acces.length - 1 ];
+      let lastSortie = this.sorties[this.sorties.length - 1 ];
+  
+      if(new Date(lastAcces.date) < new Date(lastSortie.date)){
+        this._utilisateurService.addSortieParc(this.token, "1", this.idUser).subscribe(
+          res=>alert("Sortie enregistrée")
+        )
+      }
+      else{
+        alert("Vous ne pouvez pas sortir sans être entré ;)");
+      }
     }
     else{
       alert("Vous ne pouvez pas sortir sans être entré ;)");
     }
+
 
   }
 

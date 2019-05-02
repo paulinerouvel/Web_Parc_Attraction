@@ -26,6 +26,10 @@ import { ModifyUtilisateurComponent } from './module/modify-utilisateur/modify-u
 import { AddUtilisateurComponent } from './module/add-utilisateur/add-utilisateur.component';
 import { AccesParcComponent } from './module/acces-parc/acces-parc.component';
 import { AccesAttractionComponent } from './module/acces-attraction/acces-attraction.component';
+import { AddOrdreBilletComponent } from './module/add-ordre-billet/add-ordre-billet.component';
+import { ModifyProfilComponent } from './module/modify-profil/modify-profil.component';
+import { AchatBilletInfoComponent } from './module/achat-billet-info/achat-billet-info.component';
+import { MesBilletsComponent } from './module/mes-billets/mes-billets.component';
 
 //all the routes possible in the application
 const routes : Routes = [
@@ -35,8 +39,19 @@ const routes : Routes = [
     { path : 'inscription' , component : InscriptionComponent},
     { path : 'contact' , component : ContactComponent},
     { path : 'billet' , component : BilletComponent},
-    { path : 'accueilAdmin' , component : AccueilAdminComponent},
+
+
+
+    
     { path : 'accueilVisiteur' , component : AccueilVisiteurComponent},
+    { path : 'accueilVisiteur/achatBillet', component : AchatBilletComponent},
+    { path : 'accueilVisiteur/achatBillet/achatBilletInfo/:id', component : AchatBilletInfoComponent},
+    { path : 'accueilVisiteur/accesParc', component : AccesParcComponent},
+    { path : 'accueilVisiteur/accesAttraction', component : AccesAttractionComponent},
+    { path : 'accueilVisiteur/modifyProfil', component : ModifyProfilComponent},
+    { path : 'accueilVisiteur/mesBillets', component : MesBilletsComponent},
+
+    { path : 'accueilAdmin' , component : AccueilAdminComponent},
     { path : 'accueilAdmin/statistiques' , component : StatistiquesComponent},
     { path : 'accueilAdmin/gestionParc' , component : GestionParcComponent},
     { path : 'accueilAdmin/gestionUtilisateur' , component : GestionUtilisateurComponent},
@@ -50,10 +65,13 @@ const routes : Routes = [
     { path : 'accueilAdmin/gestionBillets', component : GestionBilletComponent},
     { path : 'accueilAdmin/gestionBillets/addBillet', component : AddBilletComponent},
     { path : 'accueilAdmin/gestionBillets/addAttrBillet/:id', component : AddAttrBilletComponent},
+    { path : 'accueilAdmin/gestionBillets/addAttrBillet/:id/addOrdreBillet/:id', component : AddOrdreBilletComponent, data : {attractions : ''}},
     { path : 'accueilAdmin/gestionBillets/modifyBillet/:id', component : ModifyBilletComponent},
-    { path : 'accueilVisiteur/achatBillet', component : AchatBilletComponent},
-    { path : 'accueilVisiteur/accesParc', component : AccesParcComponent},
-    { path : 'accueilVisiteur/accesAttraction', component : AccesAttractionComponent},
+    
+    
+    
+    
+    
     { path : '**' , component : PageNotFoundComponent} //ATTENTION : Doit toujours etre la derniere route
 ];
 
@@ -65,4 +83,4 @@ const routes : Routes = [
 
 export class AppRoutingModule { }
 export const routingComponents = [AttractionsComponent, ConnexionComponent, InscriptionComponent, ContactComponent, BilletComponent, AccueilAdminComponent, AccueilVisiteurComponent, StatistiquesComponent, GestionAttractionComponent, ModifyAttractionComponent, AddAttractionComponent, AddRenovationComponent,EntretienAttractionComponent, GestionBilletComponent, ModifyBilletComponent 
-   , AddBilletComponent, AddAttrBilletComponent, AchatBilletComponent, GestionParcComponent, GestionUtilisateurComponent, ModifyUtilisateurComponent, AddUtilisateurComponent, AccesParcComponent, AccesAttractionComponent,PageNotFoundComponent]
+   , AddBilletComponent, AddAttrBilletComponent,MesBilletsComponent ,AchatBilletInfoComponent ,ModifyProfilComponent,AchatBilletComponent, GestionParcComponent, GestionUtilisateurComponent, ModifyUtilisateurComponent, AddUtilisateurComponent, AccesParcComponent, AccesAttractionComponent, AddOrdreBilletComponent ,PageNotFoundComponent]

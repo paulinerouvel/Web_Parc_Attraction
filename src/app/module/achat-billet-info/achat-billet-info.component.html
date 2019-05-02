@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col-6">
+        <div class="marge"></div>
+  
+        <div class="alert alert-danger" *ngIf="errorMsg">
+            {{errMsg}}
+        </div>
+        <form #addForm="ngForm" class="text-left" (ngSubmit)="onSubmit()" novalidate class="text-left">
+  
+          <div class="form-group">
+              <label for="dateDebutLabel">Date de début de validité</label>
+              <input #dateDebutTxt="ngModel" [class.is-invalid]="dateDebutTxt.invalid && dateDebutTxt.touched" required [(ngModel)]="dateDebut" type="date" class="form-control" name="dateDebutTxt" >
+          </div>
+
+          <button [disabled]="addForm.form.invalid" type="submit" class="btn float-right text-white" style="background: #3db4b4; ">Valider</button>
+  
+        </form>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="marge"></div>
+  </div>

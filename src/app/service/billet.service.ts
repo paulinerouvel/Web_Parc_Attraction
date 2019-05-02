@@ -23,12 +23,14 @@ export class BilletService {
       'content-type': 'application/json',
       'Authorization': 'Bearer ' + token
    });
+
    return this.http.post<any>(this._url, billet, {headers : reqHeader}).pipe(catchError( this.handleError));
 
   }
 
 
-  addAttractionToPass(token : string, idAttraction : string, idBillet : string, ordre: number){
+  addAttractionToPass(token : string, idAttraction : string, idBillet : string, ordre: string){
+
     let reqHeader = new HttpHeaders({ 
       'accept': 'application/json',
       'content-type': 'application/json',
@@ -71,8 +73,18 @@ export class BilletService {
       'content-type': 'application/json',
       'Authorization': 'Bearer ' + token
    });
-   return this.http.delete<any>(this._url + "/" + id,  {headers : reqHeader}).pipe(catchError( this.handleError));
+   return this.http.delete<any>(this._url + "?id=" + id,  {headers : reqHeader}).pipe(catchError( this.handleError));
 
+  }
+
+  deleteAttractionToPass(token : string, idAttraction : string, idBillet : string){
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.delete<any>(this._url +"?idBillet="+idBillet+"&idAttraction="+idAttraction, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
 

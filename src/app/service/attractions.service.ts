@@ -49,7 +49,17 @@ export class AttractionsService {
   }
   //get by name : get => ?nom=
 
-  //get by pass : get => ?passId=
+
+  getAttractionByBillet(id : string) : Observable<Attraction[]>{
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json'
+    });
+
+    return this.http.get<Attraction[]>(this._url + "?passId=" + id, {headers : reqHeader}).pipe(catchError( this.handleError));
+  
+  }
 
   //get  images by attr : /image => ?id=
 

@@ -25,6 +25,9 @@ a#sortie{
   color : #8D1FA7;
 }
 
+a#mbill{
+  color : #078005
+}
 
 
 .thumbnail {
@@ -75,6 +78,9 @@ a#sortie{
 .thumbnail#sortie:hover:before, .thumbnail#sortie:hover:after{
   background: #C14DDD;
 }
+.thumbnail#mbill:hover:before, .thumbnail#mbill:hover:after{
+  background: #269B24;
+}
 
 
 
@@ -101,6 +107,11 @@ a#sortie{
 .thumbnail#sortie:hover:after {
   background: #EC9FFF;
 }
+
+.thumbnail#mbill:hover:after {
+  background: #0AA607;
+}
+
 
 
 

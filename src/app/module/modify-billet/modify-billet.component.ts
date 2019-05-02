@@ -11,7 +11,7 @@ import { BilletService } from 'src/app/service/billet.service';
 export class ModifyBilletComponent implements OnInit {
 
   public id : number;
-  public billet : Billet = new Billet(0,"", "",0);
+  public billet : Billet = new Billet(0,"", "",0, "");
   public errMsg;
   public token : string = localStorage.getItem('token');
 

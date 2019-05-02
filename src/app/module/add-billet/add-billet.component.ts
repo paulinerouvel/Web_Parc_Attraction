@@ -11,7 +11,7 @@ import { BilletService } from 'src/app/service/billet.service';
 export class AddBilletComponent implements OnInit {
 
   public id = this.route.snapshot.params.id;
-  public billet : Billet = new Billet(0, "", "", 0);
+  public billet : Billet = new Billet(0, "", "", 0, "");
   public errMsg;
   public token : string = localStorage.getItem('token');
 

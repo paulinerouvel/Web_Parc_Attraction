@@ -4,7 +4,8 @@ export class Billet {
         public id: number,
         public type: string,
         public description: string,
-        public prix: number
+        public prix: number,
+        public dureeValidite: string
     ){}
     
 }

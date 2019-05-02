@@ -1,6 +1,4 @@
 {{errorMsg}}
-
-<h2>Selectionnez un billet</h2>
 <div class= "tab" *ngIf="billets">
   <table class="table">
     <thead>
@@ -10,7 +8,6 @@
       <th scope="col">Date Début</th>
       <th scope="col">Date Fin</th>
       <th scope="col">Entrée disponibles</th>
-      <th scope="col">Action</th>
     </thead>
     <tbody>
       <tr *ngFor="let billet of billets; let i = index">
@@ -20,12 +17,9 @@
         <td>{{BUs[i].dateDebut | date }}</td>
         <td>{{BUs[i].dateFin | date }} </td>
         <td *ngIf="BUs[i].nbEntreeDispo != -1">{{BUs[i].nbEntreeDispo}}</td>
-        <td *ngIf="BUs[i].nbEntreeDispo == -1"></td>
-        <td><input type="button" class="btn btn-primary" (click)="select(billet.id)" id="{{billet.id}}" value="Sélectionner ce billet"/></td>
       </tr>
     </tbody>
     
   </table>
 </div>
-
 

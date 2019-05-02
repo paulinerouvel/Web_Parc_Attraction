@@ -7,7 +7,7 @@ import { errorHandler } from '@angular/platform-browser/src/browser';
 @Component({
   selector: 'app-gestion-parc',
   templateUrl: './gestion-parc.component.html',
-  styleUrls: ['./gestion-parc.component.sass']
+  styleUrls: ['./gestion-parc.component.scss']
 })
 export class GestionParcComponent implements OnInit {
 
@@ -19,8 +19,7 @@ export class GestionParcComponent implements OnInit {
   constructor(private route: ActivatedRoute, private _parcServices : ParcService) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
-    this._parcServices.getParcById(this.id).subscribe( res => this.parc = res, err => this.errMsg = err);
+    this._parcServices.getParcById("1").subscribe( res => this.parc = res, err => this.errMsg = err);
 
   }
 
