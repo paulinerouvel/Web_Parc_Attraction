@@ -21,7 +21,7 @@
         <td>{{BUs[i].dateFin | date }} </td>
         <td *ngIf="BUs[i].nbEntreeDispo != -1">{{BUs[i].nbEntreeDispo}}</td>
         <td *ngIf="BUs[i].nbEntreeDispo == -1"></td>
-        <td><input type="button" class="btn btn-primary" (click)="select(billet.id)" id="{{billet.id}}" value="Sélectionner ce billet"/></td>
+        <td><input type="button" class="btn btn-primary" (click)="select(BUs[i].id)" id="BUs[i].id" value="Sélectionner ce billet"/></td>
       </tr>
     </tbody>
     

@@ -99,4 +99,16 @@
     </div> 
   </div>
 
+  <div>
+    <div style="display: block">
+      <h3>Frequentation du parc</h3>
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
 </div>

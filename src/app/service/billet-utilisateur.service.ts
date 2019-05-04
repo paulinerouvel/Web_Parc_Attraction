@@ -39,6 +39,15 @@ export class BilletUtilisateurService {
 
   }
 
+  getBUById(token : string, idBillet : string): Observable<any>{
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.get<any>(this._url + '?idBillet=' + idBillet, {headers : reqHeader}).pipe(catchError( this.handleError));
+
+  }
 
   //get all: get/
 
@@ -53,6 +62,16 @@ export class BilletUtilisateurService {
       'Authorization': 'Bearer ' + token
    });
    return this.http.get<any>(this._url + '?idUtilisateur=' + idUser + "&from=" +from + "&to=" + to, {headers : reqHeader}).pipe(catchError( this.handleError));
+
+  }
+
+  updateBU(token : string, upBU : Billet_utilisateur): Observable<any>{
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+   return this.http.put<any>(this._url , upBU, {headers : reqHeader}).pipe(catchError( this.handleError));
 
   }
 

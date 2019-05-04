@@ -53,6 +53,18 @@ export class StatistiquesService {
   }
 
 
+
+  getAParcFreqByYearAndMonth(token : string, id : string) : Observable<any>{
+
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+
+  
+    return this.http.get<string>(this._url +  "/parc/frequentationStats?id=" + id, {headers : reqHeader}).pipe(catchError( this.handleError));
+  }
   //get parc frec by month & year : /frequentationStats?id=
 
   getAttrFreq(token : string, id : string) : Observable<any>{

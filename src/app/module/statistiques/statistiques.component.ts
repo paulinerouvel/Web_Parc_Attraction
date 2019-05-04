@@ -24,12 +24,28 @@ export class StatistiquesComponent implements OnInit {
   public attrTxt : string;
   public attr_frequentationDate : string;
 
+  
+
 
 
 
   constructor(private _stat: StatistiquesService, private _attr: AttractionsService) { }
 
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels = [];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+  public donnees = [];
+  public barChartData = [
+    
+  ];
+
   async ngOnInit() {
+
+
     const token : string = localStorage.getItem('token');
     const id : string = "1";
 
@@ -40,7 +56,22 @@ export class StatistiquesComponent implements OnInit {
       err=>console.log(err)
     );
 
+    let ParcfreqYearAndMonth = await this._stat.getAParcFreqByYearAndMonth(token, "1").toPromise();
 
+    let datas = [];
+    for(let p = 0; p < ParcfreqYearAndMonth.length; p++ ){
+      let dateFreq = new Date(ParcfreqYearAndMonth[p].date);
+      let mois;
+     
+      dateFreq.getMonth() < 10 ? mois = "0" + dateFreq.getMonth() : mois = dateFreq.getMonth();
+      
+      this.barChartLabels.push(dateFreq.getFullYear() + "/" + mois);
+      datas.push(ParcfreqYearAndMonth[p].nb);
+
+
+    }
+    this.donnees = datas;
+    this.barChartData =[ {data: this.donnees, label: "Nombre d'entrée"}];
 
     setInterval(() => {
       this._stat.getParcFreqTR(token, id).subscribe(

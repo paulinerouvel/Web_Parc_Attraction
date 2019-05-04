@@ -50,11 +50,11 @@ export class AchatBilletInfoComponent implements OnInit {
 
     let nbEntreeDispo = -1;
 
-    if(billet.type == "1dayMonth"){
+    if(billet.type == "PASS 1daymonth"){
       nbEntreeDispo = 12;
     }
  
-    let newBU = new Billet_utilisateur(UtilisateurId, BilletId, dateAchat, dateDebut, dateFin, nbEntreeDispo);
+    let newBU = new Billet_utilisateur(-1, UtilisateurId, BilletId, dateAchat, dateDebut, dateFin, nbEntreeDispo);
     this._billetUtilisateurService.addBU(this.token, newBU).subscribe(res=>location.replace('../accueilVisiteur/mesBillets'));
   }
 

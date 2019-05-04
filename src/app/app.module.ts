@@ -41,7 +41,8 @@ import { AddOrdreBilletComponent } from './module/add-ordre-billet/add-ordre-bil
 import { ModifyProfilComponent } from './module/modify-profil/modify-profil.component';
 import { AchatBilletInfoComponent } from './module/achat-billet-info/achat-billet-info.component';
 import { MesBilletsComponent } from './module/mes-billets/mes-billets.component';
-
+import { SelectAttractionComponent } from './module/select-attraction/select-attraction.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 registerLocaleData(localeFr);
@@ -80,13 +81,15 @@ registerLocaleData(localeFr, 'fr');
     AddOrdreBilletComponent,
     ModifyProfilComponent,
     AchatBilletInfoComponent,
-    MesBilletsComponent
+    MesBilletsComponent,
+    SelectAttractionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [AttractionsService, {provide: LOCALE_ID, useValue: "fr-CA" } ],
   bootstrap: [AppComponent]

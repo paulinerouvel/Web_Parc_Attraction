@@ -34,9 +34,8 @@ export class AccueilVisiteurComponent implements OnInit {
       let lastSortie = this.sorties[this.sorties.length - 1 ];
   
       if(new Date(lastAcces.date) < new Date(lastSortie.date)){
-        this._utilisateurService.addSortieParc(this.token, "1", this.idUser).subscribe(
-          res=>alert("Sortie enregistrée")
-        )
+        await this._utilisateurService.addSortieParc(this.token, "1", this.idUser).toPromise();
+        alert("Sortie Enregistrée")
       }
       else{
         alert("Vous ne pouvez pas sortir sans être entré ;)");
