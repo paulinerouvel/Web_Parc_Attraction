@@ -26,7 +26,7 @@ export class UtilisateurService {
     return this.http.post<Utilisateur>(this._url + "/register", user, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
-  addAccesParc(token : string, idParc: string, idUser : string) : Observable<any>{
+  addAccesParc(token : string, idParc: string, idUser : string, idBU) : Observable<any>{
 
     let reqHeader = new HttpHeaders({ 
       'accept': 'application/json',
@@ -35,7 +35,7 @@ export class UtilisateurService {
   });
 
 
-    return this.http.post<Utilisateur>(this._url + "/accesParc", {idParc, idUser}, {headers : reqHeader}).pipe(catchError( this.handleError));
+    return this.http.post<Utilisateur>(this._url + "/accesParc", {idParc, idUser, idBU}, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
   addSortieParc(token : string, idParc: string, idUser : string) : Observable<any>{
@@ -51,7 +51,7 @@ export class UtilisateurService {
 
 
 
-  addAccesAttraction(token : string, idAttraction: string, idUser : string) : Observable<any>{
+  addAccesAttraction(token : string, idAttraction: string, idUser : string, idBU : string) : Observable<any>{
 
     let reqHeader = new HttpHeaders({ 
       'accept': 'application/json',
@@ -59,7 +59,7 @@ export class UtilisateurService {
       'Authorization': 'Bearer ' + token
   });
 
-    return this.http.post<Utilisateur>(this._url + "/accesAttraction", {idAttraction, idUser}, {headers : reqHeader}).pipe(catchError( this.handleError));
+    return this.http.post<Utilisateur>(this._url + "/accesAttraction", {idAttraction, idUser, idBU}, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
   getUtilisateurById(token : string, id : string) : Observable<any>{
@@ -110,6 +110,17 @@ export class UtilisateurService {
 
     return this.http.get<string>(this._url +  "/accesParc?idUtilisateur=" + idUser, {headers : reqHeader}).pipe(catchError( this.handleError));
 
+  }
+
+
+  getAccesAttraction(token : string, idUser : string, idAttr : string){
+    let reqHeader = new HttpHeaders({ 
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
+   });
+
+    return this.http.get<string>(this._url +  "/accesAttraction?idUtilisateur=" + idUser + "&idAttraction=" + idAttr, {headers : reqHeader}).pipe(catchError( this.handleError));
   }
 
 

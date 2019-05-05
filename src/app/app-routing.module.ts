@@ -30,6 +30,7 @@ import { AddOrdreBilletComponent } from './module/add-ordre-billet/add-ordre-bil
 import { ModifyProfilComponent } from './module/modify-profil/modify-profil.component';
 import { AchatBilletInfoComponent } from './module/achat-billet-info/achat-billet-info.component';
 import { MesBilletsComponent } from './module/mes-billets/mes-billets.component';
+import { SelectAttractionComponent } from './module/select-attraction/select-attraction.component';
 
 //all the routes possible in the application
 const routes : Routes = [
@@ -48,6 +49,7 @@ const routes : Routes = [
     { path : 'accueilVisiteur/achatBillet/achatBilletInfo/:id', component : AchatBilletInfoComponent},
     { path : 'accueilVisiteur/accesParc', component : AccesParcComponent},
     { path : 'accueilVisiteur/accesAttraction', component : AccesAttractionComponent},
+    { path : 'accueilVisiteur/accesAttraction/selectAttr/:id', component : SelectAttractionComponent},
     { path : 'accueilVisiteur/modifyProfil', component : ModifyProfilComponent},
     { path : 'accueilVisiteur/mesBillets', component : MesBilletsComponent},
 
@@ -83,4 +85,4 @@ const routes : Routes = [
 
 export class AppRoutingModule { }
 export const routingComponents = [AttractionsComponent, ConnexionComponent, InscriptionComponent, ContactComponent, BilletComponent, AccueilAdminComponent, AccueilVisiteurComponent, StatistiquesComponent, GestionAttractionComponent, ModifyAttractionComponent, AddAttractionComponent, AddRenovationComponent,EntretienAttractionComponent, GestionBilletComponent, ModifyBilletComponent 
-   , AddBilletComponent, AddAttrBilletComponent,MesBilletsComponent ,AchatBilletInfoComponent ,ModifyProfilComponent,AchatBilletComponent, GestionParcComponent, GestionUtilisateurComponent, ModifyUtilisateurComponent, AddUtilisateurComponent, AccesParcComponent, AccesAttractionComponent, AddOrdreBilletComponent ,PageNotFoundComponent]
+   , AddBilletComponent, SelectAttractionComponent, AddAttrBilletComponent,MesBilletsComponent ,AchatBilletInfoComponent ,ModifyProfilComponent,AchatBilletComponent, GestionParcComponent, GestionUtilisateurComponent, ModifyUtilisateurComponent, AddUtilisateurComponent, AccesParcComponent, AccesAttractionComponent, AddOrdreBilletComponent ,PageNotFoundComponent]

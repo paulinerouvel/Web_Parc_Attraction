@@ -48,10 +48,13 @@ export class AchatBilletInfoComponent implements OnInit {
     let dateFinTab = dureeToDate.toISOString().toString().split("T");
     let  dateFin = dateFinTab[0];
 
-    let nbEntreeDispo = -1;
+    let nbEntreeDispo = 1;
 
     if(billet.type == "PASS 1daymonth"){
       nbEntreeDispo = 12;
+    }
+    if(billet.type == "PASS Annuel"){
+      nbEntreeDispo = 365;
     }
  
     let newBU = new Billet_utilisateur(-1, UtilisateurId, BilletId, dateAchat, dateDebut, dateFin, nbEntreeDispo);

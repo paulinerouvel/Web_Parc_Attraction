@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background:black;">
     <img src="../../assets/images/granderoue.png" width="50px" style="margin-right:10px; background:aliceblue; filter: invert(1);">
-    <a *ngIf="connexBtn" class="navbar-brand" style="color:white;" routerLink='/accueilAdmin'>CourgettesLand</a>
-    <a *ngIf="!connexBtn" class="navbar-brand" style="color:white;" routerLink='/'>CourgettesLand</a>
+    <a  class="navbar-brand" style="color:white;" (click)="btnAccueil()">CourgettesLand</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

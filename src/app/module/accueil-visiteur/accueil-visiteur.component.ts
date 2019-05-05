@@ -32,17 +32,29 @@ export class AccueilVisiteurComponent implements OnInit {
     if(this.acces.length != 0 && this.sorties.length != 0){
       let lastAcces = this.acces[this.acces.length - 1 ];
       let lastSortie = this.sorties[this.sorties.length - 1 ];
+
   
-      if(new Date(lastAcces.date) < new Date(lastSortie.date)){
+      if(new Date(lastAcces.date) > new Date(lastSortie.date)){
         await this._utilisateurService.addSortieParc(this.token, "1", this.idUser).toPromise();
         alert("Sortie Enregistrée")
+
       }
       else{
         alert("Vous ne pouvez pas sortir sans être entré ;)");
+
       }
     }
     else{
-      alert("Vous ne pouvez pas sortir sans être entré ;)");
+      if(this.acces.length != 0 && this.sorties.length == 0){
+        await this._utilisateurService.addSortieParc(this.token, "1", this.idUser).toPromise();
+        alert("Sortie Enregistrée")
+
+      }
+      else{
+        alert("Vous ne pouvez pas sortir sans être entré ;)");
+
+      }
+      
     }
 
 

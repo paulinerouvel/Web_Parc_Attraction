@@ -29,6 +29,7 @@
             <select  #duree="ngModel" [class.is-invalid]="duree.invalid && duree.touched" required [(ngModel)]="billet.dureeValidite" class="form-control" name="duree" >
                 <option [ngValue]="31536000">1 an</option>
                 <option [ngValue]="86400">1 jour</option>
+                <option [ngValue]="172800">2 jour</option>
             </select>
         </div>
         

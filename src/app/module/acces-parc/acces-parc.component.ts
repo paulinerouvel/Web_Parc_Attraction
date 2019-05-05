@@ -59,44 +59,82 @@ export class AccesParcComponent implements OnInit {
       valid = false;
     }
     else{
-      if(selectedBillet.type == "PASS 1daymonth"){
-        if(selectedBU.nbEntreeDispo == 0){
+      if(selectedBU.nbEntreeDispo == 0){
 
-          alert("Billet Invalide !");
-          valid = false;
+        alert("Billet Invalide !");
+        valid = false;
+      }
+      else{
+        selectedBU.nbEntreeDispo -= 1;
+        await this._billetUtilisateur.updateBU(this.token, selectedBU).toPromise();
+      }
+
+
+      
+
+      let acces : any = await this._utilisateurService.getAccesParc(this.token, this.id.toString()).toPromise();
+      let sorties = await this._utilisateurService.getSortieParc(this.token, this.id.toString()).toPromise();
+
+      let oneDayVerif;
+      if(selectedBillet.type == "PASS 1daymonth"){
+        for( let j = 0; j < acces.length; j++){
+          if(acces[j].idBU == selectedBU.id){
+            oneDayVerif = acces[j].date;
+          }
+        }
+
+        
+
+        let dateVerif = new Date(oneDayVerif ).toISOString();
+        let tab = dateVerif.split("T");
+        let tab2 = tab[0];
+        let tab3 = tab2.split('-');
+
+        let mois;
+        let day;
+        Number(tab3[1])+1 < 10 ? mois = "0" + (Number(tab3[1])+1) : mois = (Number(tab3[1])+1);
+
+        let d = tab3[0] + "-" + mois + '-' + tab3[2];
+
+        
+
+        if( new Date(d) <= new Date(Date.now())){
+          valid = true;
         }
         else{
-          selectedBU.nbEntreeDispo -= 1;
-          await this._billetUtilisateur.updateBU(this.token, selectedBU).toPromise();
+          valid = false;
         }
+
       }
+      
 
       if(valid == true){
 
-
-
-
-        let acces = await this._utilisateurService.getAccesParc(this.token, this.id.toString()).toPromise();
-        let sorties = await this._utilisateurService.getSortieParc(this.token, this.id.toString()).toPromise();
     
         if(acces.length != 0 && sorties.length != 0){
           let lastAcces : any = acces[acces.length - 1 ];
           let lastSortie : any = sorties[sorties.length - 1 ];
 
       
-          if(new Date(lastAcces.date) > new Date(lastSortie.date)){
-            await this._utilisateurService.addAccesParc(this.token, "1", this.id.toString()).toPromise();
+          if(new Date(lastAcces.date) < new Date(lastSortie.date)){
+            await this._utilisateurService.addAccesParc(this.token, "1", this.id.toString(), selectedBU.id).toPromise();
             alert("Entrée enregistrée !");
-            location.replace("../accueilVisiteur");
+            location.replace("../accueilVisiteur/");
           }
           else{
             alert("Vous ne pouvez pas entrer sans être sorti ;)");
           }
         }
         else{
-          this._utilisateurService.addAccesParc(this.token, "1", this.id.toString()).toPromise();
-          alert("Entrée enregistrée !");
-          location.replace("../accueilVisiteur");
+          if(acces.length != 0 && sorties.length == 0){
+            alert("Vous ne pouvez pas entrer sans être sorti ;)");
+          }
+          else{
+            this._utilisateurService.addAccesParc(this.token, "1", this.id.toString(), selectedBU.id).toPromise();
+            alert("Entrée enregistrée !");
+            location.replace("../accueilVisiteur/");
+          }
+
         }
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as jwt_decode from 'jwt-decode';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bandeau',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BandeauComponent implements OnInit {
 
+  public token : string = localStorage.getItem('token');
   public connexBtn : boolean;
   constructor() { }
 
@@ -29,6 +32,26 @@ export class BandeauComponent implements OnInit {
     location.replace('/');
   }
 
+
+  btnAccueil(){
+    if(location.pathname.includes("/inscription") != true && location.pathname.includes("/billet") != true && location.pathname.includes("/contact") != true && location.pathname.includes("/attractions") != true){
+      
+
+      let dec = jwt_decode(this.token);
+
+
+
+      if(dec.type == "Administrateur"){
+        location.replace('../accueilAdmin');
+      }
+      else{
+        location.replace('../accueilVisiteur');
+      }
+      
+      
+      
+    }
+  }
 
 
 
